@@ -206,6 +206,7 @@ class VideoDownloader:
         """Configure YouTube-specific options"""
         options = {
             'extractflat': False,
+            'cookies_from_browser': ('chrome',),
             'writeautomaticsub': False,  # Skip subtitles for faster downloads
             'writesubtitles': False,
         }
