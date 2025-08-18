@@ -207,6 +207,7 @@ class VideoDownloader:
         options = {
             'extractflat': False,
             'cookies_from_browser': ('chrome',),
+            'prefer_ffmpeg': True,
             'writeautomaticsub': False,  # Skip subtitles for faster downloads
             'writesubtitles': False,
         }
