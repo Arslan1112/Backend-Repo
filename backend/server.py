@@ -205,9 +205,9 @@ class VideoDownloader:
     async def _get_youtube_options(self, request: VideoRequest) -> Dict[str, Any]:
         """Configure YouTube-specific options"""
         options = {
+            'prefer_ffmpeg': True,
             'extractflat': False,
             'cookies_from_browser': ('chrome',),
-            'prefer_ffmpeg': True,
             'writeautomaticsub': False,  # Skip subtitles for faster downloads
             'writesubtitles': False,
         }
