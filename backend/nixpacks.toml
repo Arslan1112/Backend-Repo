@@ -1,2 +1,2 @@
 [phases.build]
-nixPkgs = ['ffmpeg']
+packages = ['ffmpeg']
