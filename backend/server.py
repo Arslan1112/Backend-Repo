@@ -23,6 +23,11 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from fastapi.middleware.cors import CORSMiddleware
 
+# Create cookie.txt
+cookie_string = os.environ.get("COOKIE_STRING", "")
+with open("cookies.txt", "w") as f:
+    f.write(cookie_string)
+
 # Load environment variables
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -137,6 +142,7 @@ class VideoDownloader:
     ) -> Dict[str, Any]:
         """Build platform-specific yt-dlp options"""
         base_options = {
+            'cookiefile': 'cookies.txt',
             'outtmpl': str(self.download_dir / f"{download_id}.%(ext)s"),
             'format': self._get_format_string(request, platform),
             'writeinfojson': True,
@@ -199,7 +205,7 @@ class VideoDownloader:
         options = {
             'prefer_ffmpeg': True,
             'extractflat': False,
-            'cookies_from_browser': ('chrome',),
+            'cookiefile': 'cookies.txt',
             'writeautomaticsub': False,  # Skip subtitles for faster downloads
             'writesubtitles': False,
         }
