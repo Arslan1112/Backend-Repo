@@ -17,4 +17,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # 6. Uygulama başlatma komutu
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD uvicorn server:app --host 0.0.0.0 --port $PORT
